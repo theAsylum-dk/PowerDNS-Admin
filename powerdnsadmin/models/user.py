@@ -370,8 +370,10 @@ class User(db.Model):
                         self.email = ldap_result[0][0][1]['mail'][0].decode(
                             "utf-8")
                     elif LDAP_TYPE == 'ad':
-                        self.firstname = ldap_result[0][0][1]['name'][
+                        self.firstname = ldap_result[0][0][1]['givenName'][
                             0].decode("utf-8")
+                        self.lastname = ldap_result[0][0][1]['sn'][0].decode(
+                            "utf-8")
                         self.email = ldap_result[0][0][1]['userPrincipalName'][
                             0].decode("utf-8")
                 except Exception as e:
